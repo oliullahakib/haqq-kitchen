@@ -14,19 +14,35 @@ export const authOptions = {
       },
       async authorize(credentials, req) {
         const { email, password } = credentials
-        const user = (await dbConnect('users')).findOne({email})
+        const user = (await dbConnect('users')).findOne({ email })
         if (!user) {
           return null
         }
-        const isPassOk = bcrypt.compare(password,user.password)
-        if (isPassOk){
+        const isPassOk = bcrypt.compare(password, user.password)
+        if (isPassOk) {
           return user
         }
         return null
-      }
+      },
     })
-    // ...add more providers here
   ],
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      return true
+    },
+    async session({ session, user, token }) {
+      session.role = token.role
+      return session
+    },
+    async jwt({ token, user, account, profile, isNewUser }) {
+      if(user){
+        token.role = user.role
+      }
+      return token
+    }
+
+  }
+
 }
 
 const handler = NextAuth(authOptions)

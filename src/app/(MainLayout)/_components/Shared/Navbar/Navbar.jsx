@@ -12,6 +12,7 @@ const Navbar = () => {
                 <Navlink href={'/all-foods'}>All Foods</Navlink>
                 <Navlink href={'/about'}>About</Navlink>
                 <Navlink href={'/reviews'}>Reviews</Navlink>
+                <Navlink href={'/dashboard'}>Dashboard</Navlink>
             </ul>        
                 <AuthButtons/>
         </div>
