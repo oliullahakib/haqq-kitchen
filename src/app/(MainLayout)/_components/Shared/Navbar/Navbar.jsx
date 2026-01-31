@@ -1,7 +1,7 @@
 
 import React from 'react';
 import Navlink from './NavLink';
-import Link from 'next/link';
+import AuthButtons from '../../AuthButtons';
 
 const Navbar = () => {
     return (
@@ -12,11 +12,8 @@ const Navbar = () => {
                 <Navlink href={'/all-foods'}>All Foods</Navlink>
                 <Navlink href={'/about'}>About</Navlink>
                 <Navlink href={'/reviews'}>Reviews</Navlink>
-            </ul>
-            <div>
-                <button  className='btn text-black bg-amber-400'>Login</button>
-                <Link href={'/register'} className='btn'>Register</Link>
-            </div>
+            </ul>        
+                <AuthButtons/>
         </div>
     );
 };
