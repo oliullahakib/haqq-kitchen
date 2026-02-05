@@ -2,6 +2,60 @@ import Image from "next/image";
 import { getSingleFood } from "@/action/server";
 import { PlayCircle, MapPin, Leaf, DollarSign } from "lucide-react";
 
+
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const food = await getSingleFood(id);
+
+  if (!food) {
+    return {
+      title: "Food Not Found | Haqq Kitchen",
+      description: "The requested food item is not available.",
+    };
+  }
+
+  const title = `${food.title} | ${food.category} Food`;
+  const description = `Order ${food.title} (${food.category}, ${food.area}) at Haqq Kitchen for ${food.price} BDT. Fresh, tasty & chef-made food.`;
+
+  return {
+    title,
+    description,
+    keywords: [
+      food.title,
+      food.category,
+      food.area,
+      "Haqq Kitchen",
+      "food delivery",
+      "online food order",
+      "restaurant food",
+      "Bangladesh food",
+    ],
+    alternates: {
+      canonical: `/food/${food.id}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `/food/${food.id}`,
+      images: [
+        {
+          url: food.foodImg,
+          width: 1200,
+          height: 630,
+          alt: food.title,
+        },
+      ],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [food.foodImg],
+    },
+  };
+}
+
 const FoodDetails = async ({ params }) => {
   const { id } = await params;
 

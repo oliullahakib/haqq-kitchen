@@ -13,11 +13,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
-  title: "Haqq Kitchen",
-  description: "Kitchen where you can find your bally full",
-};
-
 export default function RootLayout({ children }) {
   return (
       <html lang="en">
