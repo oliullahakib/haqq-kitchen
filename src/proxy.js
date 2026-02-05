@@ -1,7 +1,7 @@
 import { getToken } from 'next-auth/jwt'
 import { NextResponse } from 'next/server'
  
-const privetRouts = ["/about","/all-foods"]
+const privetRouts = ["/about","/food-details"]
 const adminRouts = ["/dashboard"]
 // This function can be marked `async` if using `await` inside
 export async function proxy(req) {
@@ -27,5 +27,5 @@ export async function proxy(req) {
  }
 }
 export const config = {
-  matcher: ['/reviews/:path*','/dashboard/:path*',"/about/:path*","/all-foods/:path*"],
+  matcher: ['/reviews/:path*','/dashboard/:path*',"/about/:path*","/food-details/:path*"],
 }
