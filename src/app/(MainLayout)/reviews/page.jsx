@@ -22,7 +22,7 @@ const Reviews = () => {
             ...formData,
             date: new Date().toISOString().split('T')[0]
         };
-        const res = await axios.post('http://localhost:3000/api/reviews', newReview)
+        const res = await axios.post(`${NEXT_PUBLIC_BASE_URL}/api/reviews`, newReview)
         if (res.data.res.insertedId) {
             alert("Review added successfully");
             reviewRefetch();
@@ -133,7 +133,7 @@ const Reviews = () => {
                                     </div>
                                 </div>
                                 <p className="text-amber-100/80 leading-relaxed italic">
-                                    "{review.message}"
+                                    {review.message}
                                 </p>
                             </div>
                         ))}
