@@ -8,7 +8,7 @@ const useGetAllReviews = () => {
     const fetchGetAllReviews = useCallback(async () => {
         try {
             setLoading(true);
-            const data = await fetch("http://localhost:3000/api/reviews");
+            const data = await fetch("https://haqq-kitchen.vercel.app/api/reviews");
             const res = await data.json();
             setReviews(res);
             setError(null);
