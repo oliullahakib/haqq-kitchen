@@ -8,7 +8,7 @@ const useGetAllReviews = () => {
     const fetchGetAllReviews = useCallback(async () => {
         try {
             setLoading(true);
-            const data = await fetch(`${NEXT_PUBLIC_BASE_URL}/api/reviews`);
+            const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/reviews`);
             const res = await data.json();
             setReviews(res);
             setError(null);

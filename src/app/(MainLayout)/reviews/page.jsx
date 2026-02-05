@@ -22,7 +22,7 @@ const Reviews = () => {
             ...formData,
             date: new Date().toISOString().split('T')[0]
         };
-        const res = await axios.post(`${NEXT_PUBLIC_BASE_URL}/api/reviews`, newReview)
+        const res = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/reviews`, newReview)
         if (res.data.res.insertedId) {
             alert("Review added successfully");
             reviewRefetch();
