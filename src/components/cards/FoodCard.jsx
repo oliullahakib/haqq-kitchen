@@ -24,7 +24,7 @@ export default function FoodCard({ food }) {
           {/* <CartButton food={food}></CartButton> */}
 
           <Link
-            href={`/foods/${id}`}
+            href={`/food-details/${id}`}
             className="flex-1 border border-gray-300 py-2 rounded-lg hover:bg-gray-100"
           >
             View Details
